@@ -527,15 +527,15 @@ def main():
                 
                 with col1:
                     # Team 1 win probability
-                    team1_prob = pred['team1_win_prob'] * 100
-                    st.metric(f"{pred_team1} Win Probability", f"{team1_prob:.1f}%")
-                    st.progress(min(1.0, max(0.0, team1_prob / 100)))
+                    team1_prob = float(pred['team1_win_prob'])
+                    st.metric(f"{pred_team1} Win Probability", f"{team1_prob*100:.1f}%")
+                    st.progress(min(1.0, max(0.0, team1_prob)))
                 
                 with col2:
                     # Team 2 win probability
-                    team2_prob = pred['team2_win_prob'] * 100
-                    st.metric(f"{pred_team2} Win Probability", f"{team2_prob:.1f}%")
-                    st.progress(min(1.0, max(0.0, team2_prob / 100)))
+                    team2_prob = float(pred['team2_win_prob'])
+                    st.metric(f"{pred_team2} Win Probability", f"{team2_prob*100:.1f}%")
+                    st.progress(min(1.0, max(0.0, team2_prob)))
                 
                 with col3:
                     # Predicted winner
