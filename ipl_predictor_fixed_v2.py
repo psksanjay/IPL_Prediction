@@ -316,7 +316,7 @@ class IPLPredictor:
                 'team1_win_prob': pred_proba[1],
                 'team2_win_prob': pred_proba[0],
                 'predicted_winner': team1 if pred_class == 1 else team2,
-                'confidence': pred_proba[pred_class]
+                'confidence': max(pred_proba[0],pred_proba[1])
             }
 
         return predictions
@@ -506,7 +506,7 @@ def main():
                             # Progress bar for team1
                             team1_prob = pred['team1_win_prob'] * 100
                             st.metric(f"{team1} Win %", f"{team1_prob:.1f}%")
-                            st.progress(int(team1_prob))
+                            st.progress(min(100, max(0 ,int(team1_prob))))
                         
                         with col2:
                             # Progress bar for team2
